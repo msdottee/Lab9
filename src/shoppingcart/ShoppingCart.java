@@ -1,7 +1,6 @@
 package shoppingcart;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Map;
@@ -73,21 +72,24 @@ public class ShoppingCart {
 		while (shopping) {
 			printMenu();
 			System.out.println();
-			System.out.print("What item would you like to order? ");
+			System.out.print("What item would you like to order? (enter a number 0-9) ");
 
 			try {
 				int itemNumber = scnr.nextInt();
 				scnr.nextLine();
 				if (menu.containsKey(itemNumber)) {
+
 					String itemName = menu.get(itemNumber);
 					System.out.println("Adding " + itemName + " to cart at $" + items.get(itemName));
 					System.out.println();
+
 					userItems.add(itemName);
 					costOfItem.add(items.get(itemName));
 
 					System.out.print("Would you like to order anything else? (y/n) ");
-					String answer = scnr.nextLine();
+					String answer = scnr.nextLine().toLowerCase();
 					System.out.println();
+
 					if (!answer.equals("y")) {
 						shopping = false;
 					}
